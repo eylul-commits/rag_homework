@@ -1,0 +1,12 @@
+[
+  {
+    "id": "q1",
+    "question": "Example evaluation question 1?",
+    "ground_truth": "Replace with expected answer from your PDFs."
+  },
+  {
+    "id": "q2",
+    "question": "Example evaluation question 2?",
+    "ground_truth": "Replace with expected answer from your PDFs."
+  }
+]

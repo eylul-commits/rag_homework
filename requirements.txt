@@ -1,0 +1,1 @@
+# Add project dependencies (e.g. chromadb, langchain, pypdf, python-dotenv)
