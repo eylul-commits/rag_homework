@@ -2,123 +2,122 @@
   {
     "id": "q1",
     "difficulty": "easy",
-    "question": "What is a code agent as defined in the paper?",
-    "ground_truth": "An LLM coupled with external tools operating in an iterative action–observation loop to edit code and resolve issues."
+    "question": "What are the two main sources of tests used by agents?",
+    "ground_truth": "Human-written repository tests and agent-written tests created during problem solving."
   },
   {
     "id": "q2",
     "difficulty": "easy",
-    "question": "What benchmark is used in multiple studies?",
-    "ground_truth": "SWE-bench Verified."
+    "question": "What percentage of tasks does gpt-5.2 write tests for?",
+    "ground_truth": "About 0.6% of tasks."
   },
   {
     "id": "q3",
     "difficulty": "easy",
-    "question": "What is AgentStepper?",
-    "ground_truth": "An interactive debugger for LLM-based software development agents."
+    "question": "What type of feedback dominates in agent-written tests?",
+    "ground_truth": "Value-revealing print statements."
   },
   {
     "id": "q4",
-    "difficulty": "easy",
-    "question": "What are the two main learned components in SWE-World?",
-    "ground_truth": "The SWE-World Transition Model (SWT) and Reward Model (SWR)."
+    "difficulty": "hard",
+    "question": "In 'Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents' explain the trade-off between investing in test-writing and overall agent efficiency discussed in that work.",
+    "ground_truth": "Writing more tests increases API calls and token usage without improving outcomes, while reducing tests cuts costs significantly with only minor success losses."
   },
   {
     "id": "q5",
     "difficulty": "easy",
-    "question": "What is epistemological uncertainty?",
-    "ground_truth": "Uncertainty arising from limited or imperfect knowledge that is in principle reducible."
+    "question": "What is AgentStepper?",
+    "ground_truth": "AgentStepper is an interactive debugger for LLM-based software development agents."
   },
   {
     "id": "q6",
-    "difficulty": "easy",
-    "question": "What type of log is used as the event store in ESAA?",
-    "ground_truth": "An append-only log (activity.jsonl)."
+    "difficulty": "medium",
+    "question": "How does AgentStepper’s structured conversation view improve on raw logs and standard log viewers?",
+    "ground_truth": "Instead of presenting a long linear sequence of events, it organizes execution into two interleaved conversations: agent–LLM and agent–tools. This gives a clearer, more intuitive view of each cycle of prompting, response, tool invocation, and tool output."
   },
   {
     "id": "q7",
-    "difficulty": "easy",
-    "question": "What does the SWT model predict?",
-    "ground_truth": "Step-level execution feedback such as stdout, stderr, and exit code."
+    "difficulty": "medium",
+    "question": "How does AgentStepper balance concise overview and detailed inspection of agent events?",
+    "ground_truth": "It summarizes each event into a single sentence for a high-level overview, while also providing a message inspector that shows full message contents, metadata, structured JSON views, and comparisons between messages."
   },
   {
     "id": "q8",
-    "difficulty": "easy",
-    "question": "What is the main role of agent-written tests?",
-    "ground_truth": "They serve as observational feedback channels rather than strict verification tools."
+    "difficulty": "hard",
+    "question": "Why is tracking intermediate repository changes important for debugging software development agents, and how does AgentStepper address this better than the usual end-to-end workflow?",
+    "ground_truth": "Software development agents often make many code changes during execution, but standard workflows usually expose only the final result or nothing if the run fails. That hides the agent’s intermediate reasoning and makes debugging difficult. AgentStepper records changes after tool invocations, stores them in a commit-style history, links them to conversation events, and lets developers inspect diffs at different points in time."
   },
-
   {
     "id": "q9",
     "difficulty": "medium",
-    "question": "Why can agent-written tests be harmful during issue resolution?",
-    "ground_truth": "They may embed incorrect assumptions, divert effort toward satisfying tests instead of fixing issues, and consume resources."
+    "question": "How does SWE-World enable test-time scaling (TTS)?",
+    "ground_truth": "By simulating evaluation outcomes for multiple candidate solutions and selecting the best without real execution."
   },
   {
     "id": "q10",
     "difficulty": "medium",
-    "question": "Why are Docker-based approaches resource-intensive in SWE systems?",
-    "ground_truth": "They require full environments, dependency setup, storage, and execution, making them costly and hard to scale."
+    "question": "What are the three scalability limitations of Docker-based SWE systems?",
+    "ground_truth": "Data scalability, training scalability, and test-time scalability."
   },
   {
     "id": "q11",
     "difficulty": "medium",
-    "question": "How does AgentStepper improve over raw logs?",
-    "ground_truth": "It structures execution into agent–LLM and agent–tool conversations, making interaction cycles clearer."
+    "question": "How does SWE-World separate different types of agent actions?",
+    "ground_truth": "It handles navigation/editing via a sandbox and execution commands via the SWT model."
   },
   {
     "id": "q12",
-    "difficulty": "medium",
-    "question": "What are the four categories of assertions in agent-written tests?",
-    "ground_truth": "Sanity checks, property checks, relational checks, and exact checks."
+    "difficulty": "hard",
+    "question": "Explain how SWE-World maintains the agent–environment interaction loop without real execution.",
+    "ground_truth": "It preserves the loop by using a sandbox for deterministic operations and LLM-based models (SWT and SWR) to simulate execution feedback and evaluation."
   },
   {
     "id": "q13",
-    "difficulty": "medium",
-    "question": "How does SWE-World enable test-time scaling?",
-    "ground_truth": "By simulating evaluation outcomes for multiple candidate solutions without real execution."
+    "difficulty": "easy",
+    "question": "Name the four types of epistemological uncertainty.",
+    "ground_truth": "Model uncertainty, data uncertainty, inferential uncertainty, and interpretational uncertainty."
   },
   {
     "id": "q14",
     "difficulty": "medium",
-    "question": "How does ESAA ensure reproducibility of system state?",
-    "ground_truth": "Through deterministic replay of events and hash verification of the projected state."
+    "question": "In 'Managing Uncertainty in LLM-based Multi-Agent System Operation', what are the four core mechanisms in the proposed framework?",
+    "ground_truth": "Representation, identification, evolution, and adaptation."
   },
   {
     "id": "q15",
     "difficulty": "medium",
-    "question": "What are the three execution states in AgentStepper?",
-    "ground_truth": "Paused, stepping, and running."
+    "question": "What happens in the 'Characterized' state of the uncertainty lifecycle?",
+    "ground_truth": "The uncertainty is formally analyzed and described in terms of type, scope, severity, confidence, evidence, and risk."
   },
   {
     "id": "q16",
-    "difficulty": "medium",
-    "question": "How does ontological uncertainty affect epistemological uncertainty?",
-    "ground_truth": "It limits how much epistemological uncertainty can be reduced and can transform into it over time."
+    "difficulty": "easy",
+    "question": "What are the three types of ontological uncertainty?",
+    "ground_truth": "Aleatory uncertainty, architectural morphing, and interaction uncertainty."
   },
 
   {
     "id": "q17",
-    "difficulty": "hard",
-    "question": "Why do agent-written tests have low marginal utility?",
-    "ground_truth": "Because large changes in test-writing behavior barely affect success rates but significantly impact resource usage."
+    "difficulty": "easy",
+    "question": "What does ESAA stand for?",
+    "ground_truth": "Event Sourcing for Autonomous Agents."
   },
   {
     "id": "q18",
-    "difficulty": "hard",
-    "question": "Explain how SWE-World replaces real execution while preserving the interaction loop.",
-    "ground_truth": "It uses a sandbox for deterministic operations and LLM-based models (SWT and SWR) to simulate execution feedback and rewards."
+    "difficulty": "easy",
+    "question": "What is the main role of the orchestrator in ESAA?",
+    "ground_truth": "To validate agent outputs, persist events, apply effects, and project the read-model deterministically."
   },
   {
     "id": "q19",
-    "difficulty": "hard",
-    "question": "How does ESAA combine Event Sourcing and CQRS principles?",
-    "ground_truth": "It stores all changes as immutable events and separates write operations from read-model projections like roadmap.json."
+    "difficulty": "medium",
+    "question": "What problem does ESAA address regarding long context windows?",
+    "ground_truth": "It mitigates context degradation by providing a purified view instead of requiring agents to maintain long-term memory."
   },
   {
     "id": "q20",
     "difficulty": "hard",
-    "question": "Why are conventional debuggers insufficient for LLM-based agents?",
-    "ground_truth": "They expose low-level implementation details but fail to capture high-level agent reasoning and interactions with LLMs and tools."
+    "question": "Describe how ESAA limits the blast radius of a compromised agent.",
+    "ground_truth": "By enforcing boundary contracts and denying direct write access, requiring all changes to pass through orchestrator validation and structured schemas."
   }
 ]

@@ -3,3 +3,5 @@ pdf2-ESAA: Event Sourcing for Autonomous Agents in LLM-Based Software Engineerin
 pdf3-Managing Uncertainty in LLM-based Multi-Agent System Operation - 26 Feb 2026
 pdf4-SWE-World: Building Software Engineering Agents in Docker-Free Environments- 3 Feb 2026
 pdf5-Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents- 8 Feb 2026
+
+Eval dataset questions: pdf5(4 questions), pdf1(4 questions), pdf4(4 questions), pdf3(4 questions), pdf2(4 questions)
