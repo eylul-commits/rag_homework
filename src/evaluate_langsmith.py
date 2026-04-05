@@ -43,6 +43,7 @@ def _parse_judge_json(text: str) -> tuple[float, str]:
     text = (text or "").strip()
     if not text:
         return 0.0, "empty judge response"
+    # remove the markdown code block (modeller json'ı kod blok ile sarmalıyor genelde)
     if text.startswith("```"):
         m = re.match(r"```(?:json)?\s*(.*?)```", text, re.DOTALL | re.IGNORECASE)
         if m:
@@ -110,6 +111,7 @@ def _make_llm_metric_evaluator(
 
 
 def build_llm_evaluators(judge_llm: ChatOllama | ChatGoogleGenerativeAI) -> list[Any]:
+    #fill the prompt → LLM → extract string
     chain = EVALUATOR_PROMPT | judge_llm | StrOutputParser()
     return [
         _make_llm_metric_evaluator("correctness", CRITERION_CORRECTNESS, chain),
