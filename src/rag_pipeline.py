@@ -35,7 +35,7 @@ class RAGPipeline:
         top_k: int = 4,
         provider: str = "ollama",
         ollama_model: str = "llama3",
-        gemini_model: str = "gemini-2.0-flash",
+        gemini_model: str = "gemini-2.5-flash",
         google_api_key: str | None = None,
     ) -> None:
         self._persist_directory = Path(persist_directory)

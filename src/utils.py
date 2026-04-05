@@ -67,7 +67,7 @@ def get_config(**overrides: Any) -> dict[str, Any]:
         "pdf_directory": root / "data" / "pdfs",
         "eval_dataset_path": root / "data" / "eval_dataset.json",
         "provider": "ollama",
-        "gemini_model": os.getenv("GEMINI_MODEL", "gemini-2.0-flash"),
+        "gemini_model": os.getenv("GEMINI_MODEL", "gemini-2.5-flash"),
         "google_api_key": os.getenv("GOOGLE_API_KEY"),
     }
     merged = {**defaults, **overrides}

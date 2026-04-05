@@ -70,7 +70,7 @@ def build_judge_llm() -> ChatOllama | ChatGoogleGenerativeAI:
         key = os.getenv("GOOGLE_API_KEY")
         if not key:
             raise ValueError("JUDGE_PROVIDER=gemini requires GOOGLE_API_KEY")
-        model = os.getenv("JUDGE_GEMINI_MODEL", os.getenv("GEMINI_MODEL", "gemini-2.0-flash"))
+        model = os.getenv("JUDGE_GEMINI_MODEL", os.getenv("GEMINI_MODEL", "gemini-2.5-flash"))
         return ChatGoogleGenerativeAI(model=model, google_api_key=key, temperature=0)
     model = os.getenv("JUDGE_OLLAMA_MODEL", os.getenv("OLLAMA_MODEL", "llama3"))
     return ChatOllama(model=model, base_url=base_url, temperature=0)
