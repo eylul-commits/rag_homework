@@ -119,13 +119,51 @@ python -m src.experiments --with-gemini --gemini-config-index 4
 
 ### Suggested workflow for the assignment
 
-1. Place PDFs and finalize `data/eval_dataset.json`.
-2. `python -m src.ingest --force`
-3. Manually test several questions; record outcomes in `results/manual_test_results.md`.
-4. `python -m src.evaluate_langsmith --upload-dataset` (once, or `--overwrite-dataset` after edits).
-5. `python -m src.evaluate_langsmith --run-baseline`
-6. `python -m src.experiments` (long run: many embed + judge calls).
-7. Summarize metrics and failure cases in `results/final_report.md`.
+**Step 1 — Prepare data.**
+Place all 5 course PDFs in `data/pdfs/` and write 20 real QA pairs (8 easy, 8 medium, 4 hard) in `data/eval_dataset.json`. The eval dataset is your ground truth for every later step, so finish it before running anything.
+
+**Step 2 — Ingest with defaults.**
+```bash
+python -m src.ingest --force
+```
+Embeds the PDFs into Chroma with the default chunk settings (1000 / 200). `--force` ensures a clean collection.
+
+**Step 3 — Smoke-test the RAG pipeline.**
+```bash
+python -m src.rag_pipeline -q "What is regression testing?"
+```
+Try a few easy questions interactively. This catches obvious problems (wrong model, empty collection, bad embeddings) before you spend time on automated evaluation.
+
+**Step 4 — Manual testing (Part 1 deliverable).**
+Pick at least 5 questions from the dataset, run them one by one, and record the question, expected answer, RAG answer, and pass/fail in `results/manual_test_results.md`. Do this before LangSmith so you have a qualitative understanding of where the system succeeds and fails.
+
+**Step 5 — Upload dataset to LangSmith.**
+```bash
+python -m src.evaluate_langsmith --upload-dataset
+```
+Creates the `rag-course-eval` dataset in LangSmith. Run once; use `--overwrite-dataset` if you later edit `eval_dataset.json`.
+
+**Step 6 — Baseline evaluation (Part 2 deliverable).**
+```bash
+python -m src.evaluate_langsmith --run-baseline
+```
+Runs the full 20-question eval with all four LLM-as-judge metrics and the default config. This is the baseline all experiments compare against. Note overall and per-difficulty scores, and pick 3+ failure cases for your report.
+
+**Step 7 — Parameter sweep (Part 3 deliverable).**
+```bash
+python -m src.experiments --dry-run          # preview the 11 configs
+python -m src.experiments                    # full sweep (re-ingests per config)
+```
+Each config re-embeds with different chunk/overlap, queries with different top_k, and evaluates through LangSmith. Results append to `results/experiment_results.csv`. This is the longest step (many embedding + judge calls).
+
+**Step 8 — Gemini comparison (bonus).**
+```bash
+python -m src.experiments --with-gemini --gemini-config-index 4
+```
+Runs the best Ollama config (or index 4 as default) but swaps Ollama for Gemini as the generation model. Compares correctness, latency, and cost. Requires `GOOGLE_API_KEY` in `.env`.
+
+**Step 9 — Write the final report.**
+Open `results/final_report.md` and summarize: methodology, baseline metrics (overall + by difficulty), 3+ failure cases, experiment comparison table, optimal config with justification, and (if applicable) Gemini vs Ollama findings.
 
 ## Environment variables (reference)
 
