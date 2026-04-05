@@ -55,7 +55,7 @@ Retrieval-augmented QA over course PDFs using **LangChain**, **Ollama** (embeddi
 
    # Optional: Gemini for RAG or judge
    # GOOGLE_API_KEY=...
-   # GEMINI_MODEL=gemini-2.0-flash
+   # GEMINI_MODEL=gemini-2.5-flash
    ```
 
 3. Add PDFs under `data/pdfs/` and edit `data/eval_dataset.json` (20 QA pairs with real content for the assignment).
@@ -102,7 +102,7 @@ Each config re-embeds with different chunk/overlap, queries with different top_k
 
 **Step 8 — Gemini comparison (bonus).**
 ```bash
-python -m src.experiments --with-gemini --gemini-config-index 4
+python -m src.experiments --experiment-index 4 --skip-ingest --with-gemini --gemini-config-index 4
 ```
 Runs the best Ollama config (or index 4 as default) but swaps Ollama for Gemini as the generation model. Compares correctness, latency, and cost. Requires `GOOGLE_API_KEY` in `.env`.
 
@@ -187,4 +187,4 @@ python -m src.experiments --with-gemini --gemini-config-index 4
 - **Empty or missing Chroma**: Run `python -m src.ingest --force` after adding PDFs.
 - **Embedding errors**: Ensure the embed model is pulled in Ollama (`ollama pull nomic-embed-text`).
 - **LangSmith auth errors**: Check `LANGCHAIN_API_KEY` and that the project exists or can be created.
-- **Gemini errors**: Confirm `GOOGLE_API_KEY` and model name (e.g. `gemini-2.0-flash`) match your account.
+- **Gemini errors**: Confirm `GOOGLE_API_KEY` and model name (e.g. `gemini-2.5-flash`) match your account.
