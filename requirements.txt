@@ -1,4 +1,5 @@
 langchain>=0.3
+langchain-text-splitters>=0.3
 langchain-community>=0.3
 langchain-chroma>=0.2
 langchain-ollama>=0.3
