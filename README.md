@@ -22,7 +22,7 @@ Retrieval-augmented QA over course PDFs using **LangChain**, **Ollama** (embeddi
 | `src/evaluate_langsmith.py` | Upload dataset to LangSmith, baseline evaluation, LLM judges. |
 | `src/experiments.py` | Parameter sweep (chunk / overlap / `top_k`) with LangSmith + CSV log. |
 | `chroma_db/` | Local Chroma persistence (created by ingest; gitignored). |
-| `results/` | `experiment_results.csv`, `manual_test_results.md`, `final_report.md`. |
+| `results/` | `experiment_results.csv`, `final_report.md`. |
 
 ## Setup
 
@@ -79,7 +79,7 @@ python -m src.rag_pipeline -q "What is regression testing?"
 Try a few easy questions interactively. This catches obvious problems (wrong model, empty collection, bad embeddings) before you spend time on automated evaluation.
 
 **Step 4 — Manual testing (Part 1 deliverable).**
-Pick at least 5 questions from the dataset, run them one by one, and record the question, expected answer, RAG answer, and pass/fail in `results/manual_test_results.md`. Do this before LangSmith so you have a qualitative understanding of where the system succeeds and fails.
+Pick at least 5 questions from the dataset, run them one by one, and record the question, expected answer, RAG answer, and pass/fail. Do this before LangSmith so you have a qualitative understanding of where the system succeeds and fails.
 
 **Step 5 — Upload dataset to LangSmith.**
 ```bash
