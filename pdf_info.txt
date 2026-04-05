@@ -1,0 +1,5 @@
+pdf1-AgentStepper: Interactive Debugging of Software Development Agents-6 Feb 2026
+pdf2-ESAA: Event Sourcing for Autonomous Agents in LLM-Based Software Engineering - 26 Feb 2026
+pdf3-Managing Uncertainty in LLM-based Multi-Agent System Operation - 26 Feb 2026
+pdf4-SWE-World: Building Software Engineering Agents in Docker-Free Environments- 3 Feb 2026
+pdf5-Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents- 8 Feb 2026
